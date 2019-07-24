@@ -195,9 +195,10 @@ public class Array<E> {
         // 帮助垃圾回收
         data[size] = null;
         // 数组缩容
-        int newCapacity = data.length / 2;
-        if (size == newCapacity) {
-            resize(newCapacity);
+        int newCapacity = data.length / 4;
+        if (newCapacity != 0 && size == newCapacity) {
+            // 防止size因为addFirst和addLast频繁调用导致频繁调整容量
+            resize(newCapacity * 2);
         }
         return deletedElement;
     }
