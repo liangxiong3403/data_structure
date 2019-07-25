@@ -150,7 +150,7 @@ public class Array<E> {
     }
 
     /**
-     * 添加元素
+     * 修改元素
      *
      * @param index 索引
      * @param e     元素

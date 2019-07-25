@@ -1,68 +1,65 @@
-package org.liangxiong.data.structure.stack;
+package org.liangxiong.data.structure.queue;
 
 import org.liangxiong.data.structure.array.Array;
 
 /**
  * @author liangxiong
- * @Date:2019-07-24
- * @Time:20:36
- * @Description 底层基于数组实现
+ * @Date:2019-07-25
+ * @Time:10:19
+ * @Description 基于数组实现队列
  */
-public class ArrayStack<E> implements Stack<E> {
+public class ArrayQueue<E> implements Queue<E> {
 
     /**
-     * 数据容器
+     * 底层基于数组实现
      */
     private Array<E> array;
 
     /**
-     * 构造
+     * 构造指定容量大小地队列
      *
-     * @param capacity 容量
+     * @param capacity 队列容量
      */
-    public ArrayStack(int capacity) {
-        this.array = new Array<>(capacity);
+    public ArrayQueue(int capacity) {
+        array = new Array<>(capacity);
+    }
+
+    public ArrayQueue() {
+        array = new Array<>();
     }
 
     /**
-     * 默认构造器
-     */
-    public ArrayStack() {
-        this.array = new Array<>();
-    }
-
-    /**
-     * 入栈
+     * 入队
      *
      * @param e 元素
      */
     @Override
-    public void push(E e) {
+    public void enqueue(E e) {
         this.array.addLast(e);
     }
 
     /**
-     * 出栈
+     * 出队
      *
      * @return
      */
     @Override
-    public E pop() {
-        return this.array.removeLast();
+    public E dequeue() {
+        return this.array.removeFirst();
     }
 
     /**
-     * 获取栈顶元素
+     * 获取队列队首元素
      *
      * @return
      */
     @Override
-    public E peek() {
-        return this.array.getLast();
+    public E getFront() {
+        return this.array.getFirst();
     }
 
     /**
-     * 获取栈中元素个数
+     * 获取队列中元素个数
      *
      * @return
      */
@@ -72,7 +69,7 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 判断栈是否为空
+     * 判断队列是否为空
      *
      * @return
      */
@@ -82,7 +79,7 @@ public class ArrayStack<E> implements Stack<E> {
     }
 
     /**
-     * 获取栈的容量
+     * 获取队列容量
      *
      * @return
      */
@@ -93,15 +90,14 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        result.append("stack: ");
-        result.append("[");
+        result.append("queue: ");
+        result.append("front [");
         for (int i = 0; i < getSize(); i++) {
             result.append(array.get(i));
-            int lastIndexOfElement = getSize() - 1;
-            if (i != lastIndexOfElement) {
+            if (i != getSize() - 1) {
                 result.append(", ");
             } else {
-                result.append("] top");
+                result.append("] tail");
             }
         }
         return result.toString();

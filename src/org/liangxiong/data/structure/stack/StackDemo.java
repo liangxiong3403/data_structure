@@ -15,7 +15,8 @@ public class StackDemo {
             arrayStack.push(i);
         }
         System.out.println(arrayStack);
-        System.out.println("栈顶元素: " + arrayStack.pop());
+        System.out.println("弹出栈顶元素: " + arrayStack.pop());
         System.out.println("剩余元素: " + arrayStack);
+        System.out.println("查看栈顶元素: " + arrayStack.peek());
     }
 }
