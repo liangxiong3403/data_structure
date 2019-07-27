@@ -11,9 +11,11 @@ public class QueueDemo {
     public static void main(String[] args) {
         Queue<Integer> arrayQueue = new ArrayQueue<>();
         Queue<Integer> loopQueue = new LoopQueue<>();
+        Queue<Integer> linkedListQueue = new LinkedListQueue<>();
         int count = 100000;
         System.out.println("array queue:" + testEnqueueAndDequeue(arrayQueue, count));
         System.out.println("loop queue:" + testEnqueueAndDequeue(loopQueue, count));
+        System.out.println("linkedList queue:" + testEnqueueAndDequeue(linkedListQueue, count));
     }
 
     /**

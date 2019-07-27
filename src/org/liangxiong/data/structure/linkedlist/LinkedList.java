@@ -195,19 +195,41 @@ public class LinkedList<E> {
      *
      * @param index 索引
      */
-    public void remove(int index) {
-        Node cur = dummyHead.next;
-        for (int i = 0; i < index - 1; i++) {
-            cur = cur.next;
+    public E remove(int index) {
+        Node prev = dummyHead;
+        // 获取待删除元素的上一个节点
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
         }
-        cur.next = cur.next.next;
+        // 待删除节点
+        Node delNode = prev.next;
+        // 待删除节点的下一个节点重新链接上一个节点
+        prev.next = delNode.next;
+        // 帮助垃圾回收
+        delNode.next = null;
+        size--;
+        return delNode.e;
+    }
+
+    /**
+     * 删除第一个节点
+     */
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    /**
+     * 删除最后一个节点
+     */
+    public E removeLast() {
+        return remove(size - 1);
     }
 
     @Override
     public String toString() {
         Node cur = dummyHead.next;
         StringBuilder result = new StringBuilder();
-        result.append("linked list:[ ");
+        result.append("linked list: top [ ");
         for (int i = 0; i < size; i++) {
             result.append(cur.e.toString());
             if (i != size - 1) {

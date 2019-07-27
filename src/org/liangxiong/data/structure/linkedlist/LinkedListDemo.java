@@ -18,5 +18,7 @@ public class LinkedListDemo {
         linkedList.set(2, 666);
         System.out.println(linkedList.contains(666));
         System.out.println(linkedList);
+        System.out.println("remove element: " + linkedList.remove(2));
+        System.out.println(linkedList);
     }
 }

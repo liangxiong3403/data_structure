@@ -101,7 +101,7 @@ public class LoopQueue<E> implements Queue<E> {
     @Override
     public E getFront() {
         if (isEmpty()) {
-            throw new IllegalStateException("Cannot dequeue from an empty queue");
+            throw new IllegalStateException("Cannot get element from an empty queue");
         }
         return data[front];
     }
