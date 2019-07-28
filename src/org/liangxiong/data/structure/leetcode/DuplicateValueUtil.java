@@ -118,11 +118,29 @@ public class DuplicateValueUtil {
         return head;
     }
 
+    /**
+     * 删除多个重复值(通过递归调用)
+     *
+     * @param head  头节点
+     * @param value 重复值
+     * @return
+     */
+    public static ListNode removeElementsByRecursively(ListNode head, int value) {
+        if (head == null) {
+            return null;
+        } else {
+            // 链表拆分为:头节点+链表剩余部分
+            head.next = removeElementsByRecursively(head.next, value);
+            return head.value == value ? head.next : head;
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {1, 1, 2, 3, 3, 4, 5, 5, 3};
         ListNode listNode = new ListNode(arr);
-        System.out.println(removeElementsByDummyHead(listNode, 5));
-        System.out.println(removeElements(listNode, 5));
-        System.out.println(removeElements(listNode, 5));
+        System.out.println(removeElementsByDummyHead(listNode, 3));
+        System.out.println(removeElements(listNode, 3));
+        System.out.println(removeElements(listNode, 3));
+        System.out.println(removeElementsByRecursively(listNode, 3));
     }
 }
