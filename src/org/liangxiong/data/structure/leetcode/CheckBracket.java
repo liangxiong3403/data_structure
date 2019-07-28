@@ -1,4 +1,7 @@
-package org.liangxiong.data.structure.stack;
+package org.liangxiong.data.structure.leetcode;
+
+import org.liangxiong.data.structure.stack.ArrayStack;
+import org.liangxiong.data.structure.stack.Stack;
 
 /**
  * @author liangxiong
