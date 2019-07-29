@@ -128,11 +128,10 @@ public class DuplicateValueUtil {
     public static ListNode removeElementsByRecursively(ListNode head, int value) {
         if (head == null) {
             return null;
-        } else {
-            // 链表拆分为:头节点+链表剩余部分
-            head.next = removeElementsByRecursively(head.next, value);
-            return head.value == value ? head.next : head;
         }
+        // 链表拆分为:头节点+链表剩余部分
+        head.next = removeElementsByRecursively(head.next, value);
+        return head.value == value ? head.next : head;
     }
 
     public static void main(String[] args) {
