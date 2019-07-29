@@ -20,5 +20,8 @@ public class LinkedListDemo {
         System.out.println(linkedList);
         System.out.println("remove element: " + linkedList.remove(2));
         System.out.println(linkedList);
+        linkedList.removeElement(2);
+        System.out.println(linkedList);
+        System.out.println("size: " + linkedList.getSize());
     }
 }

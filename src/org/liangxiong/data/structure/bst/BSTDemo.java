@@ -18,5 +18,14 @@ public class BSTDemo {
         System.out.println("-------------------");
         bst.preOrderNR();
         System.out.println(bst);
+        System.out.println("-------------------");
+        bst.removeMax();
+        System.out.println(bst);
+        System.out.println("-------------------");
+        bst.removeMin();
+        System.out.println(bst);
+        System.out.println("-------------------");
+        bst.remove(6);
+        System.out.println(bst);
     }
 }

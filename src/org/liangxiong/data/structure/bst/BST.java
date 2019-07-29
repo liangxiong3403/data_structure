@@ -218,6 +218,164 @@ public class BST<E extends Comparable<E>> {
         System.out.println(root.e);
     }
 
+    /**
+     * 获取二分搜索树中最小元素
+     *
+     * @return
+     */
+    public E minimum() {
+        if (isEmpty()) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return minimum(root).e;
+    }
+
+    /**
+     * 获取二分搜索树中最小元素所在地节点
+     *
+     * @param node
+     * @return
+     */
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    /**
+     * 获取二分搜索树中最大元素
+     *
+     * @return
+     */
+    public E maximum() {
+        if (isEmpty()) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return maximum(root).e;
+    }
+
+    /**
+     * 获取二分搜索树中最大元素所在地节点
+     *
+     * @param node
+     * @return
+     */
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximum(node.right);
+    }
+
+    /**
+     * 删除最小元素所在节点
+     *
+     * @return
+     */
+    public E removeMin() {
+        E minimum = minimum();
+        this.root = removeMin(root);
+        return minimum;
+    }
+
+    /**
+     * 通过根节点删除指定元素
+     *
+     * @param node 根节点
+     * @return
+     */
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    /**
+     * 删除最大元素所在节点
+     *
+     * @return
+     */
+    public E removeMax() {
+        E maximum = maximum();
+        this.root = removeMax(root);
+        return maximum;
+    }
+
+    /**
+     * 通过根节点删除指定元素
+     *
+     * @param node 根节点
+     * @return
+     */
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    /**
+     * 删除元素
+     *
+     * @param e 待删除元素
+     */
+    public void remove(E e) {
+        this.root = remove(this.root, e);
+    }
+
+    /**
+     * 删除指定元素
+     *
+     * @param node 根节点
+     * @param e    待删除元素
+     * @return
+     */
+    private Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+            // 待删除节点左子树为空的情况
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            // 待删除节点右子树为空的情况
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            // 找到比待删除节点大的最小节点，即待删除节点右子树的最小节点；用这个节点顶替待删除节点位置
+            Node target = new Node(minimum(node.right).e);
+            size++;
+            target.right = removeMin(node.right);
+            target.left = node.left;
+            node.left = node.right = null;
+            size--;
+            return target;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
