@@ -4,7 +4,7 @@ package org.liangxiong.data.structure.linkedlist;
  * @author liangxiong
  * @Date:2019-07-26
  * @Time:21:22
- * @Description 链表
+ * @Description 链表;无序集合中的元素没有顺序性
  */
 public class LinkedList<E> {
 
