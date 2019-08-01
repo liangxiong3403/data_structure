@@ -4,7 +4,7 @@ package org.liangxiong.data.structure.map;
  * @author liangxiong
  * @Date:2019-07-30
  * @Time:11:11
- * @Description 基于二分搜索树实现映射
+ * @Description 基于二分搜索树实现映射(key是有序地)
  */
 public class TreeMap<K extends Comparable<K>, V> implements Map<K, V> {
 

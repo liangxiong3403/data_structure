@@ -49,7 +49,7 @@ public class LinkedListQueue<E> implements Queue<E> {
     private Node tail;
 
     /**
-     * 队列中元素个数；
+     * 队列中元素个数
      */
     private int size;
 

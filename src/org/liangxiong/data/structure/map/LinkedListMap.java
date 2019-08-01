@@ -4,7 +4,7 @@ package org.liangxiong.data.structure.map;
  * @author liangxiong
  * @Date:2019-07-30
  * @Time:11:14
- * @Description 基于链表实现映射
+ * @Description 基于链表实现映射(key是无序地)
  */
 public class LinkedListMap<K, V> implements Map<K, V> {
 

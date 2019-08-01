@@ -253,6 +253,21 @@ public class Array<E> {
         return false;
     }
 
+    /**
+     * 交换两个索引位置的值
+     *
+     * @param from 待交换索引
+     * @param to   目标索引
+     */
+    public void swap(int from, int to) {
+        if (from < 0 || from >= size || to < 0 || 0 >= size) {
+            throw new IllegalArgumentException("index illegal");
+        }
+        E source = data[from];
+        data[from] = data[to];
+        data[to] = source;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
