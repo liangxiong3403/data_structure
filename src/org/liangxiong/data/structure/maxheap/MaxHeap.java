@@ -24,6 +24,18 @@ public class MaxHeap<E extends Comparable<E>> {
         this.data = new Array<>(capacity);
     }
 
+    /**
+     * 堆用户输入的数组构造为堆
+     *
+     * @param arr
+     */
+    public MaxHeap(E[] arr) {
+        this.data = new Array<>(arr);
+        for (int i = getParentIndex(arr.length - 1); i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
     public MaxHeap() {
         this.data = new Array<>();
     }
@@ -53,6 +65,7 @@ public class MaxHeap<E extends Comparable<E>> {
      */
     public void add(E e) {
         this.data.addLast(e);
+        // 数据上浮操作
         siftUp(data.getSize() - 1);
     }
 
@@ -66,7 +79,7 @@ public class MaxHeap<E extends Comparable<E>> {
         while (index > 0 && data.get(getParentIndex(index)).compareTo(data.get(index)) < 0) {
             // 交换两个索引的元素值
             data.swap(getParentIndex(index), index);
-            // 重新计算父节点索引
+            // 重新计算节点索引
             index = getParentIndex(index);
         }
     }
@@ -89,9 +102,13 @@ public class MaxHeap<E extends Comparable<E>> {
      * @return
      */
     public E extractMax() {
+        // 获取最大值
         E e = findMax();
+        // 交换最大值和最后一个元素位置
         data.swap(0, getSize() - 1);
+        // 删除最后一个元素
         data.removeLast();
+        // 数据下沉处理
         siftDown(0);
         return e;
     }
@@ -119,6 +136,29 @@ public class MaxHeap<E extends Comparable<E>> {
             data.swap(index, j);
             index = j;
         }
+    }
+
+    /**
+     * 取出堆中元素最大值并插入新地值
+     *
+     * @param e 输入
+     * @return
+     */
+    public E replace(E e) {
+        // 取出最大值
+        E max = findMax();
+        // 新的值替换最大值
+        this.data.set(0, e);
+        // 下沉操作
+        siftDown(0);
+        return max;
+    }
+
+    /**
+     * 将任意数组转为为堆结构
+     */
+    public void heapify() {
+
     }
 
     /**

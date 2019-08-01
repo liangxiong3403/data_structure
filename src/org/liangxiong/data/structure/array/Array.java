@@ -1,5 +1,7 @@
 package org.liangxiong.data.structure.array;
 
+import java.util.Arrays;
+
 /**
  * @author liangxiong
  * @Date:2019-07-24
@@ -24,8 +26,18 @@ public class Array<E> {
      * @param capacity 数组容量
      */
     public Array(int capacity) {
-        data = (E[]) new Object[capacity];
-        size = 0;
+        this.data = (E[]) new Object[capacity];
+        this.size = 0;
+    }
+
+    /**
+     * 使用数组初始化
+     *
+     * @param arr 输入
+     */
+    public Array(E[] arr) {
+        this.data = Arrays.copyOf(arr, arr.length);
+        this.size = arr.length;
     }
 
     /**
@@ -260,7 +272,7 @@ public class Array<E> {
      * @param to   目标索引
      */
     public void swap(int from, int to) {
-        if (from < 0 || from >= size || to < 0 || 0 >= size) {
+        if (from < 0 || from >= size || to < 0 || to >= size) {
             throw new IllegalArgumentException("index illegal");
         }
         E source = data[from];
