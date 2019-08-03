@@ -9,9 +9,9 @@ import java.util.TreeMap;
  * @author liangxiong
  * @Date:2019-08-01
  * @Time:18:52
- * @Description 重复值统计
+ * @Description 获取前k个频率数据
  */
-public class ListDuplicateValue {
+public class FrequencyCount {
 
     /**
      * 频率
